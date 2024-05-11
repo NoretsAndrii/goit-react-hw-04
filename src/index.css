@@ -3,6 +3,11 @@ body {
   line-height: 1.5;
 }
 
+.ReactModal__Body--open {
+  overflow: hidden;
+  background-color: lightgray;
+}
+
 h1,
 h2,
 h3,
