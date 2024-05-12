@@ -3,11 +3,6 @@ body {
   line-height: 1.5;
 }
 
-.ReactModal__Body--open {
-  overflow: hidden;
-  background-color: lightgray;
-}
-
 h1,
 h2,
 h3,
@@ -28,4 +23,9 @@ ol {
 img {
   display: block;
   max-width: 100%;
+  height: max-content;
+}
+
+button {
+  cursor: pointer;
 }

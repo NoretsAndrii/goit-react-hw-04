@@ -1,6 +1,9 @@
 import Modal from 'react-modal';
 
 const customStyles = {
+  overlay: {
+    backgroundColor: 'rgba(51, 48, 48, 0.75)',
+  },
   content: {
     top: '50%',
     left: '50%',
@@ -9,6 +12,7 @@ const customStyles = {
     marginRight: '-50%',
     transform: 'translate(-50%, -50%)',
     padding: '0',
+    border: '0px solid transparent',
   },
 };
 Modal.setAppElement('#root');
@@ -28,7 +32,6 @@ export default function ImageModal({ isOpen, setIsOpen, modalImage }) {
         onAfterOpen={afterOpenModal}
         onRequestClose={closeModal}
         style={customStyles}
-        contentLabel="Example Modal"
       >
         <img src={modalImage} alt="" />
       </Modal>

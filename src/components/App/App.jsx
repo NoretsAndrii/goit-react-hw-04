@@ -6,12 +6,15 @@ import SearchBar from '../SearchBar/SearchBar';
 import ImageGallery from '../ImageGallery/ImageGallery';
 import LoadMoreBtn from '../LoadMoreBtn/LoadMoreBtn';
 import ImageModal from '../ImageModal/ImageModal';
+import Loader from '../Loader/Loader';
+import ErrorMessage from '../ErrorMessage/ErrorMessage';
 
 function App() {
   const [query, setQuery] = useState('');
   const [images, setImages] = useState([]);
   const [page, setPage] = useState(1);
-
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
   //===================================================
 
   const [modalIsOpen, setIsOpen] = useState(false);
@@ -42,17 +45,18 @@ function App() {
       setImages([]);
       setPage(1);
       setQuery(query);
-      // setError(false);
-      //   setLoading(true);
+      setError(false);
+      setLoading(true);
 
       const data = await fetchImages(query);
 
       console.log(data);
       setImages(data);
     } catch (error) {
+      setError(true);
       setQuery('');
     } finally {
-      // setLoading(false);
+      setLoading(false);
     }
   };
 
@@ -60,6 +64,7 @@ function App() {
     if (page === 1) return;
     const onLoadMore = async (query, page) => {
       try {
+        setLoading(true);
         console.log(page);
         console.log(query);
         const data = await fetchImages(query, page);
@@ -67,9 +72,9 @@ function App() {
           return [...prevImages, ...data];
         });
       } catch (error) {
-        // setError(true);
+        setError(true);
       } finally {
-        // setLoading(false);
+        setLoading(false);
       }
     };
     onLoadMore(query, page);
@@ -97,20 +102,16 @@ function App() {
       <SearchBar onSubmit={handleSearch} />
       <ImageGallery
         images={images}
-        setIsOpen={setIsOpen}
+        openModal={openModal}
         setModalImage={setModalImage}
       />
+      {error && <ErrorMessage />}
+      {loading && <Loader />}
       {images.length > 0 && <LoadMoreBtn onClick={() => setPage(page + 1)} />}
-      <button onClick={openModal}>Open Modal</button>
-
       <ImageModal
         isOpen={modalIsOpen}
         setIsOpen={setIsOpen}
         modalImage={modalImage}
-        // onAfterOpen={afterOpenModal}
-        // onRequestClose={closeModal}
-        // style={customStyles}
-        // contentLabel="Example Modal"
       />
     </>
   );

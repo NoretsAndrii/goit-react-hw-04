@@ -1,7 +1,7 @@
 import css from './ImageGallery.module.css';
 import ImageCard from '../ImageCard/ImageCard';
 
-export default function ImageGallery({ images, setIsOpen, setModalImage }) {
+export default function ImageGallery({ images, openModal, setModalImage }) {
   const onImageClick = e => {
     if (e.currentTarget === e.target) return console.log('ups');
     console.log('ok');
@@ -9,7 +9,7 @@ export default function ImageGallery({ images, setIsOpen, setModalImage }) {
     setModalImage(modalImageUrl);
     console.log(e.target);
     console.log(modalImageUrl);
-    setIsOpen(true);
+    openModal();
   };
 
   return (
