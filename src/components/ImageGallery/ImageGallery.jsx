@@ -4,11 +4,8 @@ import ImageCard from '../ImageCard/ImageCard';
 export default function ImageGallery({ images, openModal, setModalImage }) {
   const onImageClick = e => {
     if (e.currentTarget === e.target) return console.log('ups');
-    console.log('ok');
     const modalImageUrl = e.target.dataset.large;
     setModalImage(modalImageUrl);
-    console.log(e.target);
-    console.log(modalImageUrl);
     openModal();
   };
 

@@ -1,1 +1,19 @@
+.item {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
 
+.box {
+  padding: 8px;
+}
+
+.span {
+  margin-left: auto;
+}
+
+.text {
+  display: flex;
+  justify-content: space-between;
+}

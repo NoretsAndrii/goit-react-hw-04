@@ -1,7 +1,11 @@
+import { PiMagnifyingGlassBold } from 'react-icons/pi';
+
+import css from './SearchBar.module.css';
+
 export default function SearchBar({ onSubmit }) {
   const handleSubmit = e => {
     e.preventDefault();
-    const query = e.target.elements.query.value.trim();
+    const query = e.target.elements.query.value.toLowerCase().trim();
     if (query === '') {
       alert('input query');
       return;
@@ -11,16 +15,19 @@ export default function SearchBar({ onSubmit }) {
   };
 
   return (
-    <header>
-      <form onSubmit={handleSubmit}>
+    <header className={css.header}>
+      <form className={css.form} onSubmit={handleSubmit}>
         <input
+          className={css.input}
           type="text"
           autoComplete="off"
           autoFocus
           placeholder="Search images and photos"
           name="query"
         />
-        <button type="submit">Search</button>
+        <button className={css.button} type="submit">
+          <PiMagnifyingGlassBold />
+        </button>
       </form>
     </header>
   );
