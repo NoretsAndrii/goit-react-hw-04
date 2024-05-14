@@ -3,6 +3,7 @@ import Modal from 'react-modal';
 const customStyles = {
   overlay: {
     backgroundColor: 'rgba(51, 48, 48, 0.75)',
+    zIndex: '999',
   },
   content: {
     top: '50%',
@@ -18,9 +19,8 @@ const customStyles = {
 Modal.setAppElement('#root');
 
 export default function ImageModal({ isOpen, setIsOpen, modalImage }) {
-  function afterOpenModal() {
-    // references are now sync'd and can be accessed.
-  }
+  // function afterOpenModal() {
+  // }
 
   function closeModal() {
     setIsOpen(false);
@@ -29,7 +29,7 @@ export default function ImageModal({ isOpen, setIsOpen, modalImage }) {
     <div id="modal">
       <Modal
         isOpen={isOpen}
-        onAfterOpen={afterOpenModal}
+        // onAfterOpen={afterOpenModal}
         onRequestClose={closeModal}
         style={customStyles}
       >

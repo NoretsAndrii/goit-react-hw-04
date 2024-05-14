@@ -2,14 +2,11 @@ import { PiMagnifyingGlassBold } from 'react-icons/pi';
 
 import css from './SearchBar.module.css';
 
-export default function SearchBar({ onSubmit }) {
+export default function SearchBar({ onSubmit, notify }) {
   const handleSubmit = e => {
     e.preventDefault();
     const query = e.target.elements.query.value.toLowerCase().trim();
-    if (query === '') {
-      alert('input query');
-      return;
-    }
+    if (query === '') return notify();
     onSubmit(query);
     e.target.reset();
   };
