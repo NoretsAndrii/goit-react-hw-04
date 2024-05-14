@@ -21,7 +21,7 @@ function App() {
   const [error, setError] = useState(false);
   const [notResult, setNotResult] = useState(false);
 
-  const [modalIsOpen, setIsOpen] = useState(false);
+  const [modalIsOpen, setModalIsOpen] = useState(false);
   const [modalImage, setModalImage] = useState('');
 
   const notify = () => {
@@ -31,7 +31,7 @@ function App() {
   };
 
   function openModal() {
-    setIsOpen(true);
+    setModalIsOpen(true);
   }
 
   useEffect(() => {
@@ -91,7 +91,7 @@ function App() {
       {images.length > 0 && (
         <ImageModal
           isOpen={modalIsOpen}
-          setIsOpen={setIsOpen}
+          setIsOpen={setModalIsOpen}
           modalImage={modalImage}
         />
       )}
