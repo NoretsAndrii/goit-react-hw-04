@@ -18,12 +18,12 @@ const customStyles = {
 };
 Modal.setAppElement('#root');
 
-export default function ImageModal({ isOpen, setIsOpen, modalImage }) {
+export default function ImageModal({ isOpen, setModalIsOpen, modalImage }) {
   // function afterOpenModal() {
   // }
 
   function closeModal() {
-    setIsOpen(false);
+    setModalIsOpen(false);
   }
   return (
     <div id="modal">

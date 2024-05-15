@@ -30,7 +30,8 @@ function App() {
     toast.error('Enter text to search!!!');
   };
 
-  function openModal() {
+  function openModal(imageUrl) {
+    setModalImage(imageUrl);
     setModalIsOpen(true);
   }
 
@@ -78,8 +79,8 @@ function App() {
       {images.length > 0 && (
         <ImageGallery
           images={images}
-          openModal={openModal}
-          setModalImage={setModalImage}
+          onImageClick={openModal}
+          // setModalImage={setModalImage}
         />
       )}
       {notResult && <NotResultMessage />}
@@ -91,7 +92,7 @@ function App() {
       {images.length > 0 && (
         <ImageModal
           isOpen={modalIsOpen}
-          setIsOpen={setModalIsOpen}
+          setModalIsOpen={setModalIsOpen}
           modalImage={modalImage}
         />
       )}
